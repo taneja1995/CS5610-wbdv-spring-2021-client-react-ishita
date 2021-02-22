@@ -1,0 +1,6 @@
+.bottomright {
+    position: fixed;
+    bottom: 8px;
+    right: 16px;
+    font-size: 18px;
+}
