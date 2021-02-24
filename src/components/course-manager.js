@@ -62,7 +62,7 @@ export default class CourseManager
         const newCourse = {
             title: this.state.addNewCourse,
             owner: "me",
-            lastModified: (new Date()).toDateString()
+            lastModified: "1/1/2021"
         }
 
 
@@ -79,58 +79,27 @@ export default class CourseManager
     render() {
         return(
             <div className="container-fluid">
-                <div className="col-12 col-md-12">
-               {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">*/}
-                    <nav className="navbar navbar-expand-sm bg-dark">
-                    <div className="col-1 col-sm-1">
-                        <i className="fa fa-bars fa-2x"></i>
-                    </div>
-                    <div className="col-2 col-md-2 d-none d-sm-table-cell">
-                {/*<Navbar.Brand>Course Manager</Navbar.Brand>*/}
-                        <a className="navbar-brand">Course Manager</a>
-                    </div>
 
-                   {/*Navbar.Collapse id="responsive-navbar-nav ">*/}
-                       <div className="col-7 col-md-7 col-sm-10">
-                        <ul className="navbar-nav navbar-nav nav-fill">
-                            <li className="nav-item">
-
-                                <input  type="text" className="form-control"  value={this.state.addNewCourse}
-                                        onChange={this.onChange}
-                                       placeholder="New Course Title"  />
-
-                            </li>
-                        </ul>
-
-                       </div>
-                   {/*</Navbar.Collapse>*/}
-                    <div className="col-1 col-md-1 col-sm-1">
-                    <Link>
-                        <i className="fas fa-plus-circle fa-2x fa-pull-right"
-                           style={{color:"red",backgroundColor:"dark", borderSpacing:"20"}}
-                                    onClick={this.addCourse}></i>
-                    </Link>
-                    </div>
-                        <div className="col-1 col-md-1 col-sm-1">
-                    <Link to="/">
-                        <i className="fas fa-2x fa-home float-right"></i>
-                    </Link>
+                <div className="sticky-top">
+                    <div className="row" style={{paddingTop: "10px"}}>
+                        <div className="col-1 col-lg-1 col-sm-4">
+                            <i className="fas fa-bars fa-2x"></i>
                         </div>
-               {/* </Navbar>*/}
-                    </nav>
+                        <div className="col-2 col-lg-3 d-none d-lg-block">
+                            <h3>Course Manager</h3>
+                        </div>
+                        <div className="col-8 col-lg-7 col-sm-7">
+                            <input className="form-control" value={this.state.addNewCourse}
+                                   onChange={this.onChange}
+                                   placeholder="New Course Title"/>
+                        </div>
+                        <div className="col-1 col-lg-1 col-sm-1">
+                            <i style={{color: "red"}}
+                               className="float-right fas fa-plus-circle fa-2x" onClick={this.addCourse}></i>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="bottomright">
-                    <Link>
-                        <i className="fas fa-plus-circle fa-3x float-right"
-                           style={{color:"red", backgroundColor:"white",position:"absolute", right:"10px",bottom:"10px"}} onClick={this.addCourse}
-                        ></i>
-                    </Link>
-                </div>
-              {/*  <h1>Course Manager</h1>*/}
-               {/* <button onClick={this.addCourse}>
-                    Add Course
-                </button>*/}
 
                 {/*<Route path="/courses/table" component={CourseTable}/>*/}
                 <Route path="/courses/table" exact={true} >
@@ -145,10 +114,14 @@ export default class CourseManager
                                 updateCourse={this.updateCourse}
                                 deleteCourse={this.deleteCourse}/>
                 </Route>
-                {/*<CourseTable courses={this.state.courses}/>*/}
-                {/*<CourseGrid courses={this.state.courses}/>*/}
+                <i className="fas fa-plus-circle fa-3x"
+                   style={{color:"red", backgroundColor:"white",position:"fixed", right:"20px",bottom:"20px",index:"1000"}} onClick={this.addCourse}
+                ></i>
+
             </div>
         )
     }
 }
+
+
 // export default CourseManager

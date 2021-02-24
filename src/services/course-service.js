@@ -30,15 +30,6 @@ export const updateCourse = (courseId,course) =>
     })
         .then(response => response.json())
 
-/*export const findCourseById =(courseId) =>
-    fetch(`${courseId}`, {
-        method: 'PUT',
-        body: JSON.stringify(course),
-        headers: {
-            'content-type': 'application/json'
-        }
-    })
-        .then(response => response.json())*/
 
 const api = {
     findAllCourses: findAllCourses,

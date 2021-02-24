@@ -23,7 +23,7 @@ const CourseCard = (
 return(
 
     <div className="col-sm-6 col-md-4 col-lg-3 col-xs-12 col-xl-2 ">
-        <div className="card">
+        <div className="card" style={{height:"420px"}}>
             {/*{
                 editing &&
                 <span style={{position: "absolute", right: "10px", top: "0px", index: 1000, color: "red"}}>
@@ -53,13 +53,15 @@ return(
                 <p className="card-text">
                     Some description
                 </p>
+                <Link to="/editor">
                 <a href="#" className="btn btn-primary">{course.title}</a>
+                </Link>
 
 
 
 
                 {editing &&
-                <i onClick={() => deleteCourse(course)} className="fas fa-times pull-right"
+                <i onClick={() => deleteCourse(course)} className="fas fa-trash pull-right"
                    style={{ color:'red',position: 'absolute', top: 10, right: 10 }}></i>}
                 {/*<i onClick={() => setEditing((prevEditing) => !prevEditing)} className="fas fa-edit"></i>*/}
 
