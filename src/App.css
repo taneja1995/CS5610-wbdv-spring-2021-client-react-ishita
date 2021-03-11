@@ -27,6 +27,10 @@
   color: white;
   background-color: #007bff;
 }
+.list-group-item.active {
+  color: white;
+  background-color: #007bff;
+}
 
 .float-center{
   float: left;
