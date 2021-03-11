@@ -38,7 +38,7 @@ return(
 
                 {
                     !editing &&
-                    <Link to="/editor">
+                    <Link to={`/courses/grid/edit/${course._id}`}>
                         {course.title}
                     </Link>
                 }
@@ -53,7 +53,7 @@ return(
                 <p className="card-text">
                     Some description
                 </p>
-                <Link to="/editor">
+                <Link to={`/courses/grid/edit/${course._id}`}>
                 <a href="#" className="btn btn-primary">{course.title}</a>
                 </Link>
 

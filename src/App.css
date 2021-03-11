@@ -12,6 +12,35 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+./*nav-pills {
+  background-color: #ddd;
+  border: none;
+  color: black;
+
+}*/
+
+.nav-pills .nav-link.active {
+  color: white;
+  background-color: #007bff;
+}
+.list-group-item.active a{
+  color: white;
+  background-color: #007bff;
+}
+
+.float-center{
+  float: left;
+  position: relative;
+  left: 50%;
+}
+
+.nav-pills .nav-link{
+  background-color: #e6e6e6;
+}
+/*.fa-plus{
+  position: center;
+
+}*/
 
 .App-header {
   background-color: #282c34;

@@ -35,7 +35,7 @@ const CourseRow = (
                     !editing &&
                     <span className="">
                     <i className="fas fa-file" style={{marginRight: "10px", color: "blue"}}></i>
-                    <Link to="/editor">
+                    <Link to={`/courses/table/edit/${course._id}`}>
                     <span>{course.title}</span>
                     </Link>
                   </span>

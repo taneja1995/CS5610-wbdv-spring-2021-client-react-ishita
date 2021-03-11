@@ -15,7 +15,7 @@ const CourseGrid = ({courses,deleteCourse, updateCourse}) =>
             <i className="fas fa-caret-down"></i>
         </div>
         <div className="col-12 col-md-3">
-            <Link to="/courses/table">
+            <Link to="/course/table">
             <i className="fas fa-list float-right" style={{marginLeft: "20px"}}></i>
             </Link>
             <i className="fas fa-sort-alpha-up-alt float-right" style={{marginLeft: "20px"}}></i>
