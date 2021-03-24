@@ -1,6 +1,7 @@
 const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/ishita/courses";
 const MODULES_URL = "https://wbdv-generic-server.herokuapp.com/api/ishita/modules";
 
+
 export const createModuleForCourse = (courseId, module) =>
     fetch(`${COURSES_URL}/${courseId}/modules`, {
         method: "POST",

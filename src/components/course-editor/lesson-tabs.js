@@ -37,7 +37,7 @@ const LessonTabs = (
                     lessons.map(lesson =>
 
                         <li
-                            className={`nav-link ml-1 ${lesson._id === lessonId ? 'active' : ''}`}>
+                            className={`nav-link ml-1 resize-pills ${lesson._id === lessonId ? 'active' : ''}`}>
                             <EditableItem
                                 key={lesson._id}
                                 /*active={lesson._id === lessonId}*/
@@ -51,8 +51,9 @@ const LessonTabs = (
                         </li>
                     )
                 }
+                &nbsp;
                 <li className="nav-link ml-1">
-                    <i onClick={() => createLesson(moduleId)} className="fas fa-plus float-right"></i>
+                    <i onClick={() => createLesson(moduleId)} className="fas fa-plus create-lesson mt-3"></i>
                 </li>
             </ul>
         </div>)}

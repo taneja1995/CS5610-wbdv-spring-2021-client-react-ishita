@@ -12,11 +12,20 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-./*nav-pills {
-  background-color: #ddd;
-  border: none;
-  color: black;
 
+.create-lesson{
+
+
+  color: #007bff;
+
+}
+
+.changeColor{
+  color:inherit;
+}
+
+/*.resize-pills{
+  width:10rem;
 }*/
 
 .nav-pills .nav-link.active {
@@ -28,7 +37,7 @@
   background-color: #007bff;
 }
 .list-group-item.active {
-  color: white;
+  color: black;
   background-color: #007bff;
 }
 
