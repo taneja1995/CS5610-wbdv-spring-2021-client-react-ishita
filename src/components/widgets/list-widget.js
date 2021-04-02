@@ -42,7 +42,7 @@ const ListWidget = (
                             </ol>
                         }
                         {
-                            _widget.ordered == 0 || _widget.ordered===null &&
+                            (_widget.ordered == 0 || _widget.ordered===null) &&
                             <ul>
                                 {
                                     _widget.text.split("\n").map(item => {
