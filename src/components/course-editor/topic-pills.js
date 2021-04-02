@@ -28,7 +28,7 @@ const TopicPills = (
     }, [lessonId])
     return(
         <div>
-           {/* <h2>Topics</h2>*/}
+           {/*<h2>{topicId}</h2>*/}
             <ul className="nav nav-pills mt-3">
                 {
                     topics.map(topic =>
