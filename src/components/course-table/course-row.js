@@ -25,6 +25,7 @@ const CourseRow = (
 
         <div className="row" style={{fontSize: "1em", borderBottom: "1px solid #cccccc", padding: "5px"}}>
             <div className="col-8 col-md-7 col-lg-6">
+            <div className="col-6">
                 {
                     editing &&
                     <input value={course.title} className="form-control"
@@ -41,8 +42,16 @@ const CourseRow = (
                   </span>
                 }
             </div>
+                <div className="col-2">
+                    <Link to={`/courses/${course._id}/quizzes`}>
+                        Quizzes
+                    </Link>
+                </div>
+
+            </div>
             <div className="col-2 d-none d-md-block">me</div>
             <div className="col-2 d-none d-lg-block">1/1/2021</div>
+
             <div className="col-4 col-md-3 col-lg-2">
                 {
                     editing &&

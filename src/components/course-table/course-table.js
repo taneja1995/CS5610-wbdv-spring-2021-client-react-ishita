@@ -18,6 +18,7 @@ export default class CourseTable extends
        <div className="col-4 col-md-7 col-lg-6" style={{fontWeight:"bold"}}>Title</div>
         <div className="col-2 d-none d-md-block" style={{fontWeight:"bold"}}>Owned by</div>
         <div className="col-2 d-none d-lg-block" style={{fontWeight:"bold"}}>Last modified</div>
+
         <div className="col-8 col-md-3 col-lg-2">
             <Link to="/course/grid">
             <i className="fas fa-th fa-1x float-right" style={{marginLeft: "20px"}}></i>
