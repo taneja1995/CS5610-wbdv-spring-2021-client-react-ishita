@@ -10,13 +10,16 @@ const Question = ({question}) => {
                 <TrueFalseQuestion
                     question={question}/>
             }
+
             {
                 question.type === "MULTIPLE_CHOICE" &&
                 <MultipleChoiceQuestion
                     question={question}/>
             }
         </div>
+
     )
+
 }
 
 export default Question;

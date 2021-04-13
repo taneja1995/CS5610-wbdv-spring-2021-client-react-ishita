@@ -22,6 +22,7 @@ const QuizzesList = () => {
                                 to={`/courses/${courseId}/quizzes/${quiz._id}`}
                                 className="list-group-item">
                                 {quiz.title}
+                                <a href="#" className="btn btn-primary float-right">Start</a>
                             </Link>
                         )
                     })
