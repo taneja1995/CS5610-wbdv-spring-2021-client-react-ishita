@@ -1,72 +1,122 @@
 import React, {useState} from "react";
 
 const TrueFalseQuestion = ({question}) => {
-    const [answer, setAnswer] = useState('');
-    const [correct, setCorrect] = useState(false);
-    const [displayAns, setDisplayAns] = useState(false);
+    const [answer, setAnswer] = useState(null)
+    const [correct, setCorrect] = useState(false)
+    const [displayAns, setdisplayAns] =useState(false)
+    const[grade,setGrade] =useState(false)
     return (
         <div>
             <h4>
                 {question.question}
-                {
-                    answer == question.correct &&
-                    <i className="fas fa-check float-right"></i>
+                {     (question.correct!==JSON.stringify(answer)&& (grade))&&
+                        <i className="fas fa-times float-right" style={{color:"red"}}></i>
                 }
-                {
-                    answer != question.correct &&
-                    <i className="fas fa-times float-right"></i>
+                {     ((question.correct===JSON.stringify(answer))&& (grade))&&
+
+                    (<i  className="fas fa-check float-right" style={{color:"green"}}></i>)
+
                 }
             </h4>
-            {/*{question.correct}*/}
-            {/*<br/>*/}
-           {/* {JSON.stringify(answer)}*/}
-            {/*<br/>*/}
-            <label className="list-group-item"><input
-                type="radio"
-                onClick={() => setAnswer(true)}
-                name={question._id}/>
-                {' '}
-                True</label>
-            <label className="list-group-item"><input
-                type="radio"
-                onClick={() => setAnswer(false)}
-                name={question._id}/>
-                {' '}
-                False</label>
-                Your answer: {(answer==null)?'':((answer)?'True':'False')}
-                <br/>
-                <br/>
-                <button className="btn btn-success" onClick={() =>
-                {    // if the answer is true
-                      if(answer){
-                          // if the question's correct answer is true
-                          if(question.correct) {
-                              alert("right answer");
-                              setCorrect(true);
-                              setDisplayAns(false);
-                          }
-                          // if the question's correct answer is false
-                          else{
-                              alert("wrong answer");
-                              setCorrect(false);
-                              setDisplayAns(true);
-                          }
-                      }
-                      else{
+            {/*{question.correct}
+            <br/>
+            {JSON.stringify(answer)}
+            <br/>*/}
+            <br/>
+            <ul className="list-group">
+                <li className={`list-group-item
+                ${
+                    ( (grade))&& ("true"!==question.correct)&& (JSON.stringify(answer)==="true")&&
+                    ('list-group-item-danger')
+                }
+                ${
+                    (grade)&& ("true"===question.correct)&&
+                    'list-group-item-success'
+                }
+                `}>
+                    <label><input
+                        type="radio" onClick={() => setAnswer(true)} name={question._id}/>
+                        {' '}
+                        True</label>
+                    {
+                        ( (grade))&& ("true"!==question.correct)&& (JSON.stringify(answer)==="true")&&
+                        <i className="fas fa-times float-right" style={{color:"red"}}></i>
+                    }
+                    {
+                        (grade)&& ("true"===question.correct)&&
+                        <i className="fas fa-check float-right" style={{color:"green"}}></i>
+                    }
+                </li>
+                <li className={`list-group-item
+                ${
+                    ( (grade))&& ("false"!==question.correct)&& (JSON.stringify(answer)==="false")&&
+                    ('list-group-item-danger')
+                }
+                ${
+                    (grade)&& ("false"===question.correct)&&
+                    ('list-group-item-success')
+                }
+                `}>
+                    <label><input
+                        type="radio" onClick={() => setAnswer(false)} name={question._id}/>
+                        {' '}
+                        False</label>
+                    {
+                        ( (grade))&& ("false"!==question.correct)&& (JSON.stringify(answer)==="false")&&
+                        <i className="fas fa-times float-right" style={{color:"red"}}></i>
+                    }
+                    {
+                        (grade)&& ("false"===question.correct)&&
+                        <i className="fas fa-check float-right" style={{color:"green"}}></i>
+                    }
+                </li>
+            </ul>
 
-                          if(!question.correct){
-
-                              setCorrect(true);
-                              setDisplayAns(false);
-                          }
-                          else{
-
-                              setCorrect(false);
-                              setDisplayAns(true);
-                          }
-                              }
-
-                }}>Grade</button>
+            Your answer: {(answer===null)?'':((answer)?'True':'False')}
+            <br/>
+            <br/>
+            <button type="button" className="btn btn-success"
+                    onClick={
+                        ()=>
+                        {   // setting the grade value to true on click
+                            setGrade(true)
+                            // when answer is true
+                            if(answer)
+                            {
+                                // if the correct answer is true
+                                if(question.correct)
+                                {
+                                    setCorrect(true)
+                                    setdisplayAns(false)
+                                }
+                                // if the correct answer is false
+                                else
+                                {
+                                    setCorrect(false)
+                                    setdisplayAns(true)
+                                }
+                            }
+                            // when the given answer is false
+                            else
+                            {
+                                // when correct answer is false
+                                if(!question.correct)
+                                {
+                                    setCorrect(true)
+                                    setdisplayAns(false)
+                                }
+                                // when correct answer is true
+                                else
+                                {
+                                    setCorrect(false)
+                                    setdisplayAns(true)
+                                }
+                            }
+                        }
+                    }
+            >Grade</button>
+            <br/>
+            <br/>
         </div>
     )
 }

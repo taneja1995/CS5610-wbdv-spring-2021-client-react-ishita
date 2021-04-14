@@ -9,7 +9,8 @@ const MultipleChoiceQuestion = ({question}) => {
             <h4>{question.question}{
                 // if answer is wrong then setDisplayAns will be called and displayAns would be set to true.
                 displayAns&&(
-                    answer===question.correct? <i className="fas fa-check float-right" style={{ color: 'green'}} ></i>:<i className="fas fa-times float-right" style={{ color: 'red'}}></i>
+                    answer===question.correct? <i className="fas fa-check float-right" style={{ color: 'green'}} ></i>
+                        : <i className="fas fa-times float-right" style={{ color: 'red'}}></i>
                 )
             }
             {/*// if answer is correct*/}
@@ -30,8 +31,7 @@ const MultipleChoiceQuestion = ({question}) => {
                            } ${ correct && (question.correct === choice?`list-group-item-success`:'')}`}
                            key={question._id}>
                             <label>
-                                <input type="radio"
-                                       onClick={() => setAnswer(choice)}
+                                <input type="radio" onClick={() => setAnswer(choice)}
                                        name={question._id}/>
                                 {' '}
                                 {choice}
@@ -76,6 +76,8 @@ const MultipleChoiceQuestion = ({question}) => {
             }
             }>Grade
             </button>
+            <br/>
+            <br/>
         </div>
     )
 }
