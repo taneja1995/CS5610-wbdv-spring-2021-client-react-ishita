@@ -14,20 +14,16 @@ const QuizzesList = () => {
     return(
         <div>
             <h2>Quizzes</h2>
-            <div className="list-group">
+            <ul className='list-group'>
                 {
-                    quizzes.map((quiz) => {
-                        return(
-                            <Link
-                                to={`/courses/${courseId}/quizzes/${quiz._id}`}
-                                className="list-group-item">
-                                {quiz.title}
-                                <a href="#" className="btn btn-primary float-right">Start</a>
-                            </Link>
-                        )
-                    })
+                    quizzes.map(quiz => <li className='list-group-item' key={quiz._id}>
+                        <Link className='btn btn-success' to={`/courses/${courseId}/quizzes/${quiz._id}`}>{quiz.title}</Link>
+                        <Link to={`/courses/${courseId}/quizzes/${quiz._id}`} className='btn btn-primary float-right'>Start</Link>
+                        {/*<Link className='btn btn-secondary float-right'
+                              to={`/courses/${courseId}/quizzes/${quiz._id}/attempts`}>Attempts Histories</Link>
+*/}                    </li>)
                 }
-            </div>
+            </ul>
         </div>
     )
 }

@@ -1,85 +1,54 @@
-import React,{useState} from "react";
+import React, {useState, useEffect} from 'react';
 
-const MultipleChoiceQuestion = ({question}) => {
-    const [correct, setCorrect] = useState(false);
+const MultipleChoiceQuestion = ({graded,question, questions, setQuestions}) => {
     const [answer, setAnswer] = useState('');
-    const [displayAns, setDisplayAns] = useState(false);
+    const choices = question.choices;
+    const rightChoice = answer === question.correct && graded;
+    const wrongChoice = graded && answer !== question.correct && graded;
+    let count = 0;
+    useEffect(() => {
+        if (graded) {
+            const unrelated = questions.filter(q => q._id !== question._id);
+            const target = questions.find(q => q._id === question._id);
+            target.answer = answer;
+            const updatedQuestions = [...unrelated, target];
+            setQuestions(updatedQuestions);
+        }
+    }, [graded])
     return (
         <div>
-            <h4>{question.question}{
-                // if answer is wrong then setDisplayAns will be called and displayAns would be set to true.
-                displayAns&&(
-                    answer===question.correct? <i className="fas fa-check float-right" style={{ color: 'green'}} ></i>
-                        : <i className="fas fa-times float-right" style={{ color: 'red'}}></i>
-                )
-            }
-            {/*// if answer is correct*/}
+            <h4>{question.question}
+                {rightChoice && <i className="fas fa-check float-right" style={{color: 'green'}}/>}
+                {wrongChoice && <i className="fas fa-times float-right" style={{color: 'red'}}/>}</h4>
+            <ul className='list-group'>
                 {
-                    correct&&(
-                        <i className="fas fa-check float-right" style={{ color: 'green'}}></i>
-                    )
-                }
-            </h4>
-            {/* {question.correct}*/}
-
-            <ul className="list-group">
-                {
-                    question.choices.map((choice) => {
-                        return (
-                           <li className={`list-group-item ${displayAns && (question.correct===choice?`list-group-item-success`:
-                           answer===choice?`list-group-item-danger`:'')
-                           } ${ correct && (question.correct === choice?`list-group-item-success`:'')}`}
-                           key={question._id}>
+                    choices.map(choice => {
+                        const ra =  question.correct === choice && graded;
+                        const swa = graded && question.correct !== answer && answer === choice;
+                        return (<li className={`list-group-item ${ra ? 'list-group-item-success' : ''}
+                         ${swa ? 'list-group-item-danger' : ''}`} key={count=count+1}>
                             <label>
-                                <input type="radio" onClick={() => setAnswer(choice)}
-                                       name={question._id}/>
+                                <input type='radio'
+                                       checked={answer === choice}
+                                       disabled={graded}
+                                       value={choice}
+                                       onChange={e => setAnswer(e.target.value)}/>
                                 {' '}
                                 {choice}
                             </label>
-                               {
-                                   displayAns&&((question.correct === choice)?
-                                       <i className="fas fa-check float-right" style={{ color: 'green'}} ></i> :
-                                       (answer===choice)?
-                                           <i className="fas fa-times float-right" style={{ color: 'red'}}></i>:''
-                                   )
-                               }
-                               {
-                                   correct&&( question.correct === choice?
-                                       <i className="fas fa-check float-right" style={{ color: 'green'}}></i>:``
-                                   )
-                               }
-                           </li>
-
-                        )
-
+                            {
+                                ra && <i className="fas fa-check float-right" style={{color: 'green'}}/>
+                            }
+                            {
+                                swa && <i className="fas fa-times float-right" style={{color: 'red'}}/>
+                            }
+                        </li>)
                     })
                 }
             </ul>
-            {/*print the chosen answer*/}
-            Your answer: {answer}
-            <br/>
-            <br/>
-            <button className="btn btn-success" onClick={() =>
-                // if answer is correct
-
-            {
-                if (answer === question.correct) {
-                   /* alert("right answer");*/
-                    setCorrect(true);
-                }
-                // if answer is wrong then display both right and wrong answers
-                else {
-                    /*alert("wrong answer");*/
-                    setCorrect(false);
-                    setDisplayAns(true);
-                }
-            }
-            }>Grade
-            </button>
-            <br/>
-            <br/>
+            <p>Your Answer: {answer}</p>
         </div>
-    )
+    );
 }
 
 export default MultipleChoiceQuestion;
