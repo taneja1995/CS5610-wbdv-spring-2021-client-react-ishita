@@ -3,43 +3,64 @@ import React, {useState, useEffect} from 'react';
 const TrueFalseQuestion = ({question, questions, setQuestions, graded}) => {
     const [answer, setAnswer] = useState('');
     const choices = ["true", "false"];
-    const rightChoice = answer === question.correct && graded;
-    const wrongChoice = graded && answer !== question.correct && graded;
+    const rightAns='';
+    const wrongAns='';
+    {
+        if(answer===question.correct && graded)
+        {
+            let rightAns=answer;
+        }
+    }
+    {
+        if(answer!==question.correct && graded)
+        {
+            let  wrongAns=answer
+        }
+    }
     let count = 0;
     useEffect(() => {
         if (graded) {
-            const unrelated = questions.filter(q => q._id !== question._id);
-            const target = questions.find(q => q._id === question._id);
-            target.answer = answer;
-            const updatedQuestions = [...unrelated, target];
-            setQuestions(updatedQuestions);
+            const u = questions.filter(q => q._id !== question._id);
+            const t = questions.find(q => q._id === question._id);
+            t.answer = answer;
+            const modifiedQues = [...u, t];
+            setQuestions(modifiedQues);
         }
     }, [graded])
     return (
         <div>
             <h4>{question.question}
-                {rightChoice && <i className="fas fa-check float-right" style={{color: 'green'}}/>}
-                {wrongChoice && <i className="fas fa-times float-right" style={{color: 'red'}}/>}</h4>
+                {rightAns &&
+                <i className="fas fa-check float-right"
+                   style={{color: 'green'}}/>}
+                {wrongAns &&
+                <i className="fas fa-times float-right"
+                   style={{color: 'red'}}/>}</h4>
             <ul className='list-group'>
                 {
                     choices.map(choice => {
-                        const ra = graded && question.correct === choice;
-                        const swa = graded && question.correct !== answer && answer === choice;
-                        return (<li className={`list-group-item ${ra ? 'list-group-item-success' : ''} ${swa ? 'list-group-item-danger' : ''}`} key={count++}>
+                        const right = graded && question.correct === choice;
+                        const wrong = graded && question.correct !== answer && answer === choice;
+                        return (<li className={`list-group-item ${right ? 'list-group-item-success' : ''}
+                         ${wrong ? 'list-group-item-danger' : ''}`}
+                                    key={count++}>
                             <label>
                                 <input type='radio'
                                        value={choice} checked={answer === choice}
-                                       disabled={graded}
                                        onChange={e => setAnswer(e.target.value)}/>
                                 {' '}
                                 {choice}
 
                             </label>
                             {
-                                ra && <i className="fas fa-check float-right" style={{color: 'green'}}/>
+                                right &&
+                                <i className="fas fa-check float-right"
+                                   style={{color: 'green'}}/>
                             }
                             {
-                                swa && <i className="fas fa-times float-right" style={{color: 'red'}}/>
+                                wrong &&
+                                <i className="fas fa-times float-right"
+                                   style={{color: 'red'}}/>
                             }
                         </li>)
                     })

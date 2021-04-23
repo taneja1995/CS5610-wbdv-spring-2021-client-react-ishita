@@ -17,7 +17,8 @@ const Quiz = () => {
         QuestionService.findQuestionsForQuiz(quizId)
             .then(res => setQuestions(res));
         if (graded) {
-            QuizService.submitQuiz(quiz._id, questions).then(res => setAttempt(res));
+            QuizService.submitQuiz(quiz._id, questions)
+                .then(res => setAttempt(res));
         }
     }, [quizId, graded])
     return (
@@ -25,29 +26,32 @@ const Quiz = () => {
             <div className='row'>
                 <h2>Quiz No:  {quizId} <br/></h2>
             </div>
-            {graded && <Link className='btn btn-dark' to={`/courses/${courseId}/quizzes/${quizId}/attempts`}>Check attempts</Link>}
+            {graded && <Link className='btn btn-dark'
+                             to={`/courses/${courseId}/quizzes/${quizId}/attempts`}>
+                Check attempts
+            </Link>
+            }
             {
                 questions.map(question =>
                     <div key={question._id}>
-                        <Question question={question} questions={questions} setQuestions={setQuestions}
-                                  graded={graded}/>
+                        <Question question={question}
+                                  questions={questions}
+                                  setQuestions={setQuestions}
+                                  graded={graded}
+                        />
                     </div>
                 )
             }
             <div>
                 <button onClick={() => setGraded(true)}
-                        className='btn btn-success'
-                        disabled={graded}>
+                        className='btn btn-success'>
                     Submit
                 </button>
                 {
                     graded &&
                     <div>
-
-                        <h2>Submitted Score: {attempt.score}</h2>
-                        <h2>
-                            Submitted Id: {attempt._id}
-                        </h2>
+                        <br/>
+                        <h4>Score: {attempt.score}</h4>
                     </div>
                 }
             </div>

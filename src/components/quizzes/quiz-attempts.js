@@ -12,13 +12,13 @@ const QuizAttempts = () => {
     return (
         <div>
             <div className='row'>
-                <h1>Attempts History</h1>
+                <h2>Total Attempts</h2>
             </div>
             <table className='table'>
                 <thead>
                 <tr>
-                    <th>Sequence</th>
-                    <th>ID</th>
+                    <th>Series</th>
+                    <th>Attempt ID</th>
                     <th>Score</th>
                 </tr>
                 </thead>

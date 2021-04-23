@@ -17,11 +17,14 @@ const QuizzesList = () => {
             <ul className='list-group'>
                 {
                     quizzes.map(quiz => <li className='list-group-item' key={quiz._id}>
-                        <Link className='btn btn-success' to={`/courses/${courseId}/quizzes/${quiz._id}`}>{quiz.title}</Link>
-                        <Link to={`/courses/${courseId}/quizzes/${quiz._id}`} className='btn btn-primary float-right'>Start</Link>
-                        {/*<Link className='btn btn-secondary float-right'
-                              to={`/courses/${courseId}/quizzes/${quiz._id}/attempts`}>Attempts Histories</Link>
-*/}                    </li>)
+                        <Link className='btn btn-success'
+                              to={`/courses/${courseId}/quizzes/${quiz._id}`}>{quiz.title}
+                        </Link>
+                        <Link
+                            to={`/courses/${courseId}/quizzes/${quiz._id}`} className='btn btn-primary float-right'>
+                            Start
+                        </Link>
+                   </li>)
                 }
             </ul>
         </div>
